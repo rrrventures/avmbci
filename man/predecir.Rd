@@ -4,12 +4,16 @@
 \alias{predecir}
 \title{dist_imap}
 \usage{
-predecir(registro, varmod, cols, xgbcv)
+predecir(registro, varmod, vars_onehot, modelo)
 }
 \arguments{
 \item{registro}{propiedad para la cual se buscan testigos}
 
-\item{df_f}{dataframes de comparables. Debe tener columnas lat y lng sin NAs}
+\item{varmod}{nombres de variables que el modelo necesita}
+
+\item{vars_onehot}{nombres de variables onehot}
+
+\item{modelo}{nombres de variables onehot}
 }
 \description{
 Encuentra las distancias a los comparables (propiedades similares) de una propiedad en particular a la base de testigos

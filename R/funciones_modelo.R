@@ -63,7 +63,7 @@ predecir <- function(registro, varmod, vars_onehot, modelo){
   var.mod <- varmod
   registro <- registro %>% select(-one_of(factorFeatures))
   registro[,var.mod[!var.mod %in% names(registro)]] <- NA 
-  matrix_train <- xgb.DMatrix(as.matrix(registro[, var.mod]), missing=NA)
+  matrix_train <- xgboost::xgb.DMatrix(as.matrix(registro[, var.mod]), missing=NA)
 
   #prediccion
   PRECIO_ESTIMADO <- predict(modelo, matrix_train, ntreelimit = 800)

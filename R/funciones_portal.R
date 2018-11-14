@@ -38,7 +38,7 @@ reducir_base_comparar <- function(registro, df, distancia = 500, variable_metraj
   df$distancias <- vec
   df_filt <- df[indx & !is.na(indx),]
   df_filt <- df_filt %>% dplyr::filter(metros < registro[[variable_metraje]]*(1 + similitud), metros > registro[[variable_metraje]]*(1 - similitud))
-  df_filt <- df_filt %>% arrange_(~ distancias) %>% group_by_(~ arriendo) %>% slice(1:n_testigos)
+  df_filt <- df_filt %>% dplyr::arrange_(~ distancias) %>% dplyr::group_by_(~ arriendo) %>% dplyr::slice(1:n_testigos)
 
   return(df_filt)
 }
@@ -54,7 +54,7 @@ reducir_base_comparar <- function(registro, df, distancia = 500, variable_metraj
 #' @examples
 
 dist_imap <- function(df_f, registro){
-  dist <- mapply(gdist,registro$lat,registro$lng,df_f$lat,df_f$lng, units="m")
+  dist <- mapply(Imap::gdist,registro$lat,registro$lng,df_f$lat,df_f$lng, units="m")
   return(dist)
 }
 
